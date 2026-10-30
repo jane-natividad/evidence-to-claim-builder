@@ -1,37 +1,51 @@
-# Evidence-to-Claim Builder
+# Evidence to Claim Builder
 
-Turns trial results into audience-specific claims — clinician, patient, payer — and runs them through a transparent rule-based pre-check before Medical, Legal and Regulatory review.
+Drafts claims for clinicians, patients and payers from trial results, then pre checks them before review.
 
-**[Live demo](https://evidence-to-claim-builder.vercel.app)** — works immediately, no API key or setup required. Everything runs in your browser; nothing you enter is stored or sent anywhere. Please use fictional/sample data only.
+**[Try the live demo](https://evidence-to-claim-builder.vercel.app)**. It works straight away with no setup, runs entirely in your browser, and stores nothing. All data is fictional or synthetic.
+
+## Why I built it
+
+While mapping a real nutrition therapy evidence base, I kept finding strong results phrased for the wrong reader. A statistic that suits a clinician can be off limits in patient materials. I wanted a tool that gets the first draft right for each audience.
+
+## The problem
+
+Strong evidence still has to be written differently for a clinician, a patient and a payer, and what a product may say depends on what kind of product it is. First drafts that miss this waste reviewers' time.
+
+## What I built
+
+Pick endpoints from two fictional trials, choose an audience and a product category, and get a drafted claim with a transparent pre check covering significance, comparators, study design, population, category rules, citations and overstatement.
 
 ## Who it's for
 
-Brand, medical affairs, and medical-communications teams preparing claims for MLR review across audiences and product categories.
-
-## Why it matters
-
-Strong evidence still has to be written differently for a clinician, a patient, and a payer, and what a product may legally say depends on what kind of product it is. First drafts that ignore this waste reviewers' time. This tool drafts the audience-specific claim and pre-checks it against the common rules first, so review time goes to judgement, not catching basic errors.
+Brand, medical affairs and medical communications teams preparing claims for review.
 
 ## What it does
 
-- Select the endpoints the claim should rest on; non-significant and uncontrolled results are labelled
-- Switch audience (clinician, patient & caregiver, payer) and product category (prescription medicine, medical food, digital therapeutic)
-- Edit the draft freely — the pre-check re-runs as you type and names the rule behind each flag
+- Select the trial results a claim should rest on, with weak or uncontrolled results clearly labelled
+- Switch audience and product category and watch the draft change
+- Edit freely while the pre check reruns and names the rule behind each flag
 
-## Product decisions that mattered more than the model
+## Decisions that shaped it
 
-1. **One evidence base, several compliant claims** — audience changes the claim, not the evidence
-2. **Category sets the rules** — e.g. efficacy statistics routed away from patient materials for a medical food
-3. **Every rule is visible** — no model decides what's compliant
+1. **One evidence base, several claims:** the audience changes the wording while the evidence stays the same.
+2. **The product category sets the rules:** efficacy numbers stay out of patient materials for a medical food, for example.
+3. **Every rule is visible:** each flag names the rule behind it.
+
+## Key takeaway
+
+The most honest reading of the evidence is usually narrower and stronger, and the tool shows which results truly support it.
 
 ## Built with
 
-- HTML, CSS, JavaScript (single-file prototype, no framework, no build step)
+- HTML, CSS and JavaScript in a single file
 
-## Run locally
+## Run it locally
 
-Open `index.html` in any browser — no install needed.
+Open `index.html` in any browser. There's nothing to install.
 
-## Status
+## About this project
 
-This is a prototype built to explore a problem space, using fictional/synthetic data — not a finished product and not connected to any organization's real systems. Built by [Jane Natividad](https://github.com/jane-natividad) — see more at [jane-natividad.github.io](https://jane-natividad.github.io).
+This is a working prototype I built to explore a real problem space. It uses illustrative, fictional data and isn't connected to any organisation's systems. You can find more of my work at [jane-natividad.github.io](https://jane-natividad.github.io).
+
+Built by [Jane Natividad](https://github.com/jane-natividad).
