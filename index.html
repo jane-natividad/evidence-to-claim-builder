@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evidence to Claim — Claim Builder | Jane Natividad</title>
+<meta name="description" content="Turn trial results into audience-specific claims, then run them through a transparent rule-based compliance pre-check before Medical, Legal and Regulatory review.">
+<style>
+  * { box-sizing: border-box; }
+  :root {
+    --accent: #0071e3; --accent-soft: #e8f2ff; --accent-border: #cce2ff;
+    --ink: #1d1d1f; --ink-soft: #48484a; --muted: #6e6e73;
+    --hairline: #e5e5e7; --panel: #f5f5f7; --bg: #ffffff;
+    --good: #1a7f4e; --good-soft: #e7f6ee;
+    --warn: #9a6b00; --warn-soft: #fff6e0;
+    --bad: #b3261e; --bad-soft: #fdecea;
+  }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif; }
+  .wrap { max-width: 800px; margin: 0 auto; padding: 56px 24px 80px; }
+  .back-link { display: inline-block; font-size: 12px; color: var(--muted); text-decoration: none; margin-bottom: 22px; }
+  .back-link:hover { color: var(--accent); }
+  .eyebrow { font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 14px; }
+  h1 { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 14px; line-height: 1.18; text-wrap: balance; }
+  h2 { font-size: 17px; font-weight: 650; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .byline { font-size: 12.8px; color: var(--muted); margin: 0 0 28px; }
+  .byline a { color: var(--muted); }
+  p { font-size: 14.5px; line-height: 1.62; color: var(--ink-soft); margin: 0 0 16px; }
+  .lede { font-size: 15.5px; line-height: 1.6; color: var(--ink); background: var(--panel); border-radius: 14px; padding: 20px 24px; margin: 0 0 28px; }
+  .section-label { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 36px 0 14px; }
+  .section-sub { font-size: 13px; color: var(--ink-soft); margin: -6px 0 14px; line-height: 1.55; }
+  .panel { background: var(--panel); border-radius: 14px; padding: 20px 22px; margin: 0 0 18px; }
+  .card { border: 1px solid var(--hairline); border-radius: 12px; padding: 14px 16px; background: #fff; }
+  .card.top { border-color: var(--accent-border); background: var(--accent-soft); }
+  .stack { display: flex; flex-direction: column; gap: 10px; }
+  .pipeline { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+  .pipe-step { flex: 1 1 auto; min-width: 130px; background: var(--panel); border: 1px solid var(--hairline); border-radius: 10px; padding: 10px 12px; font-size: 11.3px; color: var(--ink-soft); line-height: 1.4; }
+  .pipe-step b { display: block; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
+  .pipeline-note { font-size: 11.5px; color: var(--muted); margin: 0 0 24px; }
+  .btn { font-size: 12px; font-weight: 600; color: var(--accent); background: #fff; border: 1px solid var(--accent-border); border-radius: 8px; padding: 7px 13px; cursor: pointer; font-family: inherit; }
+  .btn:hover { background: var(--accent-soft); }
+  .btn.primary { color: #fff; background: var(--accent); border-color: var(--accent); }
+  .btn.primary:hover { background: #005bbf; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: 11.8px; color: var(--accent); background: #fff; border: 1px solid var(--accent-border); border-radius: 999px; padding: 6px 13px; cursor: pointer; font-family: inherit; text-align: left; }
+  .chip:hover { background: var(--accent-soft); }
+  .chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .tag { display: inline-block; font-size: 10.3px; font-weight: 700; letter-spacing: 0.04em; border-radius: 999px; padding: 3px 9px; white-space: nowrap; }
+  .tag.good { color: var(--good); background: var(--good-soft); }
+  .tag.warn { color: var(--warn); background: var(--warn-soft); }
+  .tag.bad { color: var(--bad); background: var(--bad-soft); }
+  .tag.info { color: var(--accent); background: var(--accent-soft); }
+  .tag.mute { color: var(--muted); background: var(--panel); }
+  .bar-track { height: 7px; background: var(--hairline); border-radius: 999px; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--accent); border-radius: 999px; transition: width 0.25s ease; }
+  input[type=text], input[type=password], select, textarea { font-family: inherit; font-size: 13px; padding: 9px 12px; border-radius: 8px; border: 1px solid var(--hairline); background: #fff; color: var(--ink); }
+  textarea { width: 100%; resize: vertical; line-height: 1.5; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .gov-grid { display: flex; flex-direction: column; gap: 10px; margin: 0 0 32px; }
+  .gov-item { display: flex; gap: 12px; border: 1px solid var(--hairline); border-radius: 12px; padding: 13px 16px; }
+  .gov-icon { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 12.5px; font-weight: 700; }
+  .gov-text b { display: block; font-size: 12.8px; color: var(--ink); margin-bottom: 2px; }
+  .gov-text span { font-size: 12.2px; color: var(--ink-soft); line-height: 1.55; }
+  .not-list { font-size: 12.5px; color: var(--ink-soft); line-height: 1.7; margin: 0 0 32px; padding-left: 20px; }
+  .not-list li { margin-bottom: 6px; }
+  .why { font-size: 13.3px; font-style: italic; color: var(--ink); background: var(--panel); border-radius: 14px; padding: 18px 22px; margin: 0 0 32px; line-height: 1.58; }
+  .disclosure { font-size: 11.5px; line-height: 1.55; color: var(--muted); background: var(--panel); border-radius: 10px; padding: 12px 16px; margin: 0 0 32px; }
+  pre.out { white-space: pre-wrap; word-break: break-word; background: var(--panel); border-radius: 10px; padding: 14px 16px; font-size: 12px; line-height: 1.6; color: var(--ink-soft); font-family: ui-monospace, "SF Mono", Menlo, monospace; margin: 0; }
+  table.grid { width: 100%; border-collapse: collapse; font-size: 12.3px; }
+  table.grid th { text-align: left; font-size: 10.3px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 8px 8px; border-bottom: 1px solid var(--hairline); }
+  table.grid td { padding: 9px 8px; border-bottom: 1px solid var(--hairline); color: var(--ink-soft); vertical-align: top; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  footer { border-top: 1px solid var(--hairline); padding-top: 20px; font-size: 12px; color: var(--muted); }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 480px) { .wrap { padding: 40px 16px 60px; } h1 { font-size: 24px; } }
+
+  .ep-row { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: start; padding: 10px 0; border-bottom: 1px solid var(--hairline); }
+  .ep-row:last-child { border-bottom: none; }
+  .ep-row input[type=checkbox] { margin-top: 3px; accent-color: var(--accent); }
+  .ep-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .ep-meta { font-size: 11.8px; color: var(--muted); margin-top: 2px; }
+  .ctl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .ctl-grid label { font-size: 11px; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px; letter-spacing: 0.03em; }
+  .claim-box { border: 1px solid var(--accent-border); background: #fff; border-radius: 12px; padding: 16px 18px; }
+  .claim-label { font-size: 10.3px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+  .chk { display: flex; gap: 10px; align-items: flex-start; font-size: 12.6px; line-height: 1.5; padding: 8px 0; border-bottom: 1px solid var(--hairline); color: var(--ink-soft); }
+  .chk:last-child { border-bottom: none; }
+  .chk .tag { flex: 0 0 auto; min-width: 58px; text-align: center; }
+  .verdict { font-size: 13px; font-weight: 600; margin: 0 0 10px; }
+  .honest { font-size: 13px; line-height: 1.6; color: var(--ink); }
+  @media (max-width: 560px) { .ctl-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back-link" href="https://jane-natividad.github.io">&larr; Back to portfolio</a>
+  <div class="eyebrow">Medical Affairs · Brand · Working Prototype</div>
+  <h1>Evidence to claim: one trial, three audiences, and a pre-check before anything reaches review</h1>
+  <p class="byline">Jane Natividad &nbsp;&middot;&nbsp; <a href="https://jane-natividad.github.io">jane-natividad.github.io</a> &nbsp;&middot;&nbsp; <a href="https://github.com/jane-natividad/evidence-to-claim-builder">View on GitHub</a></p>
+
+  <div class="lede">Strong evidence still has to be written differently for a clinician, a patient, and a payer &mdash; and what a product is legally allowed to say depends on what kind of product it is. This prototype drafts an audience-specific claim from the trial endpoints you pick, then runs it through a transparent rule-based pre-check: non-significant endpoints, missing citations, out-of-population extrapolation, superlatives, and efficacy statistics in channels where the product category doesn't allow them. It doesn't replace Medical, Legal and Regulatory review. It makes the first draft worth their time.</div>
+
+  <div class="section-label">1 · The evidence (fictional)</div>
+  <p class="section-sub" id="trial-note"></p>
+  <div class="card" id="endpoints"></div>
+
+  <div class="section-label">2 · Who is reading, and what kind of product is it?</div>
+  <div class="panel"><div class="ctl-grid">
+    <div><label>Audience</label><div class="chips" id="aud"></div></div>
+    <div><label>Product category</label><div class="chips" id="cat"></div></div>
+  </div></div>
+
+  <div class="section-label">3 · Drafted claim (editable)</div>
+  <div class="claim-box"><div class="claim-label" id="claim-label"></div><textarea id="claim" rows="5"></textarea>
+    <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="regen" type="button">Re-draft from evidence</button><span style="font-size:11.5px;color:var(--muted);align-self:center">Edit freely &mdash; the pre-check re-runs as you type.</span></div>
+  </div>
+
+  <div class="section-label">4 · Pre-check</div>
+  <div class="card"><div class="verdict" id="verdict"></div><div id="checks"></div></div>
+
+  <div class="section-label">5 · The honest read</div>
+  <div class="card honest" id="honest"></div>
+
+  <div class="section-label">Design choices</div>
+  <div class="gov-grid">
+    <div class="gov-item"><div class="gov-icon">1</div><div class="gov-text"><b>One evidence base, several compliant claims</b><span>The same result is a cited statistic for a clinician, a purpose-and-mechanism statement for a patient, and an outcomes-and-tolerability story for a payer.</span></div></div>
+    <div class="gov-item"><div class="gov-icon">2</div><div class="gov-text"><b>The product category sets the rules</b><span>A prescription medicine, a medical food, and a digital therapeutic sit under different claim rules. In many markets a food for special medical purposes can state what it's for, but can't carry a promotional efficacy number on pack or in patient materials.</span></div></div>
+    <div class="gov-item"><div class="gov-icon">3</div><div class="gov-text"><b>Every rule is visible</b><span>No model decides what's compliant. Each check is a plain rule you can read in the code, and every flag says which rule fired.</span></div></div>
+  </div>
+
+  <div class="disclosure">Prototype with fictional data. The product, both trials, and every figure are invented for demonstration. The rules are simplified illustrations of common claim principles, not legal or regulatory advice for any market.</div>
+  <footer>Built by <a href="https://jane-natividad.github.io">Jane Natividad</a>. No frameworks, no build step &mdash; a single static page and plain JavaScript. Companion to <a href="https://evidence-prioritization-copilot.vercel.app">Evidence, Prioritized</a>.</footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var PRODUCT = "Nutriva";
+  var TRIALS = {
+    A: { name: "Trial A", cite: "Fictional Trial A, 2024", design: "Multicentre randomized controlled trial", pop: "pediatric", popLabel: "children aged 6–17", n: 82 },
+    B: { name: "Trial B", cite: "Fictional Trial B, 2025", design: "Open-label pilot randomized trial", pop: "adult", popLabel: "adults aged 18–60", n: 44 }
+  };
+  var ENDPOINTS = [
+    { id: "a1", trial: "A", name: "Remission at week 6", a: 71, b: 58, p: 0.31, kind: "efficacy" },
+    { id: "a2", trial: "A", name: "Sustained remission at week 12", a: 74, b: 46, p: 0.01, kind: "efficacy" },
+    { id: "a3", trial: "A", name: "Completed the treatment course", a: 96, b: 72, p: 0.003, kind: "tolerability" },
+    { id: "b1", trial: "B", name: "Remission at week 6", a: 66, b: 55, p: 0.42, kind: "efficacy" },
+    { id: "b2", trial: "B", name: "Mucosal healing at week 24 (single arm)", a: 33, b: null, p: null, kind: "efficacy" }
+  ];
+  var AUD = [
+    { id: "hcp", label: "Clinician (scientific exchange)", pop: "any" },
+    { id: "patient", label: "Patient & caregiver", pop: "any" },
+    { id: "payer", label: "Payer / HTA", pop: "any" }
+  ];
+  var CAT = [
+    { id: "rx", label: "Prescription medicine" },
+    { id: "fsmp", label: "Medical food (special medical purpose)" },
+    { id: "dtx", label: "Digital therapeutic" }
+  ];
+  var CONDITION = "a chronic inflammatory bowel condition";
+  var state = { sel: { a2: true, a3: true }, aud: "hcp", cat: "fsmp", popTarget: "pediatric" };
+  var $ = function (id) { return document.getElementById(id); };
+
+  $("trial-note").innerHTML = "<b>" + PRODUCT + "</b> is a fictional formula used alongside a structured diet for " + CONDITION + ". Two fictional trials: <b>Trial A</b> &mdash; " + TRIALS.A.design.toLowerCase() + ", n=" + TRIALS.A.n + ", " + TRIALS.A.popLabel + ", diet + " + PRODUCT + " vs. formula-only standard care. <b>Trial B</b> &mdash; " + TRIALS.B.design.toLowerCase() + ", n=" + TRIALS.B.n + ", " + TRIALS.B.popLabel + ".";
+
+  function epText(e) { return e.b === null ? e.a + "% (no comparator)" : e.a + "% vs. " + e.b + "%" + (e.p !== null ? " (p=" + e.p + ")" : ""); }
+  function sig(e) { return e.p !== null && e.p < 0.05; }
+
+  function renderEndpoints() {
+    $("endpoints").innerHTML = ENDPOINTS.map(function (e) {
+      var t = TRIALS[e.trial];
+      var badge = e.p === null ? '<span class="tag mute">No comparator</span>' : sig(e) ? '<span class="tag good">Significant</span>' : '<span class="tag warn">Not significant</span>';
+      return '<label class="ep-row"><input type="checkbox" data-id="' + e.id + '"' + (state.sel[e.id] ? " checked" : "") + '><div><div class="ep-name">' + t.name + " · " + e.name + '</div><div class="ep-meta">' + epText(e) + " · " + t.popLabel + " · " + t.design + "</div></div>" + badge + "</label>";
+    }).join("");
+    $("endpoints").querySelectorAll("input").forEach(function (c) {
+      c.addEventListener("change", function () { state.sel[c.dataset.id] = c.checked; draft(); });
+    });
+  }
+  function chipGroup(el, items, key) {
+    el.innerHTML = "";
+    items.forEach(function (it) {
+      var b = document.createElement("button"); b.type = "button"; b.className = "chip" + (state[key] === it.id ? " on" : ""); b.textContent = it.label;
+      b.addEventListener("click", function () { state[key] = it.id; chipGroup(el, items, key); draft(); });
+      el.appendChild(b);
+    });
+  }
+
+  function selected() { return ENDPOINTS.filter(function (e) { return state.sel[e.id]; }); }
+
+  function draft() {
+    var eps = selected();
+    var aud = AUD.filter(function (a) { return a.id === state.aud; })[0];
+    $("claim-label").textContent = "Draft for: " + aud.label + " · " + CAT.filter(function (c) { return c.id === state.cat; })[0].label;
+    var txt = "";
+    if (!eps.length) { txt = ""; }
+    else if (state.aud === "hcp") {
+      txt = ["A", "B"].map(function (k) {
+        var es = eps.filter(function (e) { return e.trial === k; });
+        if (!es.length) return "";
+        var t = TRIALS[k];
+        return "In a " + t.design.toLowerCase() + " (" + t.cite + ") in " + t.popLabel + ", the structured diet with " + PRODUCT + " vs. formula-only standard care: "
+          + es.map(function (e) { return e.name.toLowerCase() + ", " + epText(e); }).join("; ") + ".";
+      }).filter(Boolean).join(" ");
+    } else if (state.aud === "patient") {
+      if (state.cat === "fsmp") {
+        txt = "The " + PRODUCT + " program pairs a structured food plan with " + PRODUCT + " formula, for the dietary management of " + CONDITION + " under your care team's supervision — so managing the condition doesn't have to mean giving up eating.";
+      } else {
+        var e0 = eps[0];
+        txt = "In a clinical study, more people on the " + PRODUCT + " program reached " + e0.name.toLowerCase().replace(/ at week.*/, "") + " (" + e0.a + " out of 100) than with standard care (" + (e0.b === null ? "—" : e0.b) + " out of 100). Talk to your care team about whether it's right for you. (" + TRIALS[e0.trial].cite + ")";
+      }
+    } else {
+      var tol = eps.filter(function (e) { return e.kind === "tolerability"; });
+      var eff = eps.filter(function (e) { return e.kind === "efficacy"; });
+      txt = (eff.length ? "Compared with formula-only standard care, " + PRODUCT + " with a structured diet was associated with " + eff.map(function (e) { return e.name.toLowerCase() + " (" + epText(e) + ")"; }).join(" and ") + ". " : "")
+        + (tol.length ? "Treatment completion was " + tol.map(function (e) { return epText(e); }).join("; ") + ", relevant to real-world persistence and downstream resource use. " : "")
+        + "Source: " + eps.map(function (e) { return TRIALS[e.trial].cite; }).filter(function (v, i, a) { return a.indexOf(v) === i; }).join("; ") + ".";
+    }
+    $("claim").value = txt;
+    check();
+  }
+
+  function check() {
+    var txt = $("claim").value;
+    var low = txt.toLowerCase();
+    var eps = selected();
+    var out = [];
+    function add(level, rule, msg) { out.push({ level: level, rule: rule, msg: msg }); }
+
+    if (!eps.length) add("bad", "Evidence", "No endpoint selected — a claim needs evidence behind it.");
+    var nonSig = eps.filter(function (e) { return e.p !== null && !sig(e); });
+    nonSig.forEach(function (e) { add("bad", "Significance", TRIALS[e.trial].name + " · " + e.name + " is not statistically significant (p=" + e.p + "). It can't be used as an efficacy claim; at most, report it neutrally alongside significant results."); });
+    eps.filter(function (e) { return e.b === null; }).forEach(function (e) { add("warn", "Comparator", e.name + " has no comparator arm — it can't support a 'better than' claim."); });
+    eps.filter(function (e) { return /open-label|pilot/i.test(TRIALS[e.trial].design); }).forEach(function (e) {
+      if (!/open-label|pilot|early/i.test(txt)) add("warn", "Study design", TRIALS[e.trial].name + " is an " + TRIALS[e.trial].design.toLowerCase() + "; the claim should say so.");
+    });
+    var mentionsAdult = /adult/i.test(txt), mentionsPed = /child|pediatric|paediatric/i.test(txt);
+    var trialPops = eps.map(function (e) { return TRIALS[e.trial].pop; });
+    if (trialPops.indexOf("pediatric") !== -1 && trialPops.indexOf("adult") === -1 && state.aud !== "hcp" && !mentionsPed) add("warn", "Population", "Evidence is pediatric only, but the claim doesn't say so. Don't let it read as applying to adults.");
+    if (mentionsAdult && trialPops.indexOf("adult") === -1) add("bad", "Population", "The claim mentions adults, but the selected evidence is pediatric only.");
+    var hasStat = /\d+\s?%|\d+ out of 100|p\s?=|p</i.test(txt);
+    if (state.cat === "fsmp" && state.aud === "patient" && hasStat) add("bad", "Product category", "Medical foods often can't carry promotional efficacy statistics in patient-facing materials. State purpose and mechanism; route the statistics to clinician scientific exchange.");
+    if (state.cat === "fsmp" && state.aud === "patient" && !/dietary management/i.test(txt)) add("warn", "Product category", "Patient materials for a medical food should state its purpose, e.g. 'for the dietary management of…'.");
+    if (state.aud === "patient" && !/care team|doctor|clinician|supervision/i.test(txt)) add("warn", "Fair balance", "Patient copy should point back to the care team, not imply self-directed use.");
+    if (hasStat && !/trial|study|\(.*20\d\d\)/i.test(txt)) add("bad", "Citation", "Statistics appear without a cited source.");
+    var sup = (txt.match(/\b(cure[sd]?|best|proven|guarantee[sd]?|miracle|revolutionary|always|completely|safe and effective)\b/gi) || []);
+    if (sup.length) add("bad", "Language", "Absolute or superlative language: \"" + sup.join('", "') + "\". Replace with what the evidence actually shows.");
+    if (state.aud === "payer" && !eps.some(function (e) { return e.kind === "tolerability"; })) add("info", "Payer relevance", "Payers weigh persistence and resource use heavily — consider adding the treatment-completion endpoint.");
+
+    var bad = out.filter(function (o) { return o.level === "bad"; }).length, warn = out.filter(function (o) { return o.level === "warn"; }).length;
+    $("verdict").innerHTML = bad ? '<span class="tag bad">Not ready</span> ' + bad + " blocking issue" + (bad > 1 ? "s" : "") + (warn ? ", " + warn + " to fix" : "") + "."
+      : warn ? '<span class="tag warn">Needs edits</span> No blocking issues; ' + warn + " item" + (warn > 1 ? "s" : "") + " to tighten before review."
+      : '<span class="tag good">Ready for review</span> Passes every pre-check. It still needs Medical, Legal and Regulatory sign-off.';
+    $("checks").innerHTML = out.length ? out.map(function (o) { return '<div class="chk"><span class="tag ' + o.level + '">' + o.rule + "</span><span>" + o.msg + "</span></div>"; }).join("")
+      : '<div class="chk"><span class="tag good">All</span><span>Significance, comparator, design, population, category, fair balance, citation and language checks all passed.</span></div>';
+  }
+
+  $("honest").innerHTML = "The honest read of this evidence isn't \"" + PRODUCT + " works\". It's narrower and stronger: in children, the structured diet with " + PRODUCT + " <b>sustained</b> remission significantly better than formula-only care at week 12 (p=0.01) and was <b>far easier to stick with</b> (p=0.003). The week-6 results weren't significant in either trial, and the adult data is an open-label pilot &mdash; a real but early signal. A claim built on the week-12 and completion results is specific and defensible. One built on the week-6 numbers isn't.";
+
+  $("claim").addEventListener("input", check);
+  $("regen").addEventListener("click", draft);
+  renderEndpoints(); chipGroup($("aud"), AUD, "aud"); chipGroup($("cat"), CAT, "cat");
+  draft();
+})();
+</script>
+</body>
+</html>
