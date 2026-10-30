@@ -1,8 +1,8 @@
-# Evidence to Claim — evidence-to-claim-builder
+# Evidence-to-Claim Builder
 
 Turns trial results into audience-specific claims — clinician, patient, payer — and runs them through a transparent rule-based pre-check before Medical, Legal and Regulatory review.
 
-**[Live demo](https://evidence-to-claim-builder.vercel.app)** — works immediately, no API key or setup required.
+**[Live demo](https://evidence-to-claim-builder.vercel.app)** — works immediately, no API key or setup required. Everything runs in your browser; nothing you enter is stored or sent anywhere. Please use fictional/sample data only.
 
 ## Who it's for
 
@@ -10,7 +10,7 @@ Brand, medical affairs, and medical-communications teams preparing claims for ML
 
 ## Why it matters
 
-Strong evidence still has to be written differently for a clinician, a patient, and a payer, and what a product may legally say depends on what kind of product it is. First drafts that ignore this waste reviewers' time.
+Strong evidence still has to be written differently for a clinician, a patient, and a payer, and what a product may legally say depends on what kind of product it is. First drafts that ignore this waste reviewers' time. This tool drafts the audience-specific claim and pre-checks it against the common rules first, so review time goes to judgement, not catching basic errors.
 
 ## What it does
 
@@ -18,7 +18,7 @@ Strong evidence still has to be written differently for a clinician, a patient, 
 - Switch audience (clinician, patient & caregiver, payer) and product category (prescription medicine, medical food, digital therapeutic)
 - Edit the draft freely — the pre-check re-runs as you type and names the rule behind each flag
 
-## Product decisions that mattered more than the code
+## Product decisions that mattered more than the model
 
 1. **One evidence base, several compliant claims** — audience changes the claim, not the evidence
 2. **Category sets the rules** — e.g. efficacy statistics routed away from patient materials for a medical food
@@ -26,12 +26,12 @@ Strong evidence still has to be written differently for a clinician, a patient, 
 
 ## Built with
 
-- HTML, CSS, JavaScript (single-file prototype, no build step)
+- HTML, CSS, JavaScript (single-file prototype, no framework, no build step)
 
 ## Run locally
 
-Open `index.html` in any browser.
+Open `index.html` in any browser — no install needed.
 
 ## Status
 
-This is a prototype built to explore a problem space, using illustrative/fictional data — not a finished product and not connected to any organization's real systems. Built by [Jane Natividad](https://github.com/jane-natividad) — see more at [jane-natividad.github.io](https://jane-natividad.github.io).
+This is a prototype built to explore a problem space, using fictional/synthetic data — not a finished product and not connected to any organization's real systems. Built by [Jane Natividad](https://github.com/jane-natividad) — see more at [jane-natividad.github.io](https://jane-natividad.github.io).
